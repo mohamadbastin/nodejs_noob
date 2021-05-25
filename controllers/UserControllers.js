@@ -42,7 +42,7 @@ const userLoginController = async (req, res) => {
 
     const u = await User.findOne({ where: { name: name } })
     if (!u) {
-        res.status(404)
+        res.status(403)
         return res.json({msg: "wrong user/pass"})
     }
 
@@ -52,7 +52,7 @@ const userLoginController = async (req, res) => {
             id: u.id,
             name: u.name
         }, JWT_SECRET)
-
+        res.status(200)
         return res.json({msg: "ok", token: t})
     } else {
         res.status(403)

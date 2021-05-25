@@ -1,0 +1,71 @@
+UniqueConstraintError [SequelizeUniqueConstraintError]: Validation error
+    at Query.formatError (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\sequelize\lib\dialects\mysql\query.js:242:16)
+    at Query.run (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\sequelize\lib\dialects\mysql\query.js:77:18)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\sequelize\lib\sequelize.js:619:16
+    at async MySQLQueryInterface.insert (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\sequelize\lib\dialects\abstract\query-interface.js:749:21)
+    at async User.save (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\sequelize\lib\model.js:3954:35)
+    at async Function.create (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\sequelize\lib\model.js:2207:12)
+    at async userRegisterController (C:\Users\Mohamad\Desktop\dev\nodejs-noob\controllers\UserControllers.js:19:9) {
+  errors: [
+    ValidationErrorItem {
+      message: 'users.name must be unique',
+      type: 'unique violation',
+      path: 'users.name',
+      value: 'ali',
+      origin: 'DB',
+      instance: [User],
+      validatorKey: 'not_unique',
+      validatorName: null,
+      validatorArgs: []
+    }
+  ],
+  fields: { 'users.name': 'ali' },
+  parent: Error: Duplicate entry 'ali' for key 'users.name'
+      at Packet.asError (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Execute.execute (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\connection.js:425:32)
+      at PacketParser.onPacket (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:376:20)
+      at addChunk (internal/streams/readable.js:309:12)
+      at readableAddChunk (internal/streams/readable.js:284:9)
+      at Socket.Readable.push (internal/streams/readable.js:223:10) {
+    code: 'ER_DUP_ENTRY',
+    errno: 1062,
+    sqlState: '23000',
+    sqlMessage: "Duplicate entry 'ali' for key 'users.name'",
+    sql: 'INSERT INTO `Users` (`id`,`name`,`password`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?);',
+    parameters: [
+      'ali',
+      '$2b$13$qb3Ix6AMuVpFhbWUyoBZhOgiqnSbxf9skYAqWmPETQU/cf2gApp0a',
+      '2021-05-23 04:55:57',
+      '2021-05-23 04:55:57'
+    ]
+  },
+  original: Error: Duplicate entry 'ali' for key 'users.name'
+      at Packet.asError (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\packets\packet.js:712:17)
+      at Execute.execute (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\commands\command.js:28:26)
+      at Connection.handlePacket (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\connection.js:425:32)
+      at PacketParser.onPacket (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\connection.js:75:12)
+      at PacketParser.executeStart (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\packet_parser.js:75:16)
+      at Socket.<anonymous> (C:\Users\Mohamad\Desktop\dev\nodejs-noob\node_modules\mysql2\lib\connection.js:82:25)
+      at Socket.emit (events.js:376:20)
+      at addChunk (internal/streams/readable.js:309:12)
+      at readableAddChunk (internal/streams/readable.js:284:9)
+      at Socket.Readable.push (internal/streams/readable.js:223:10) {
+    code: 'ER_DUP_ENTRY',
+    errno: 1062,
+    sqlState: '23000',
+    sqlMessage: "Duplicate entry 'ali' for key 'users.name'",
+    sql: 'INSERT INTO `Users` (`id`,`name`,`password`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?);',
+    parameters: [
+      'ali',
+      '$2b$13$qb3Ix6AMuVpFhbWUyoBZhOgiqnSbxf9skYAqWmPETQU/cf2gApp0a',
+      '2021-05-23 04:55:57',
+      '2021-05-23 04:55:57'
+    ]
+  },
+  sql: 'INSERT INTO `Users` (`id`,`name`,`password`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?);'
+}

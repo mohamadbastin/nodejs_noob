@@ -8,6 +8,8 @@ const app = express();
 const userRoutes = require("./routes/UserRoutes")
 const blogRoutes = require("./routes/BlogRoutes")
 const bodyParser = require("body-parser");
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express")
 
 async function check() {
     try {
@@ -20,6 +22,23 @@ async function check() {
 }
 
 check();
+
+const swaggerOptions = {
+    swaggerDefinition : {
+        info: {
+            title: "nodejs express noob testing around",
+            description: "testing and playing",
+            contact: {
+                name: 'mohamad bastin'
+            },
+            servers: ['http://localhost:8000']
+        }
+    },
+    apis: ['./routes/*.js']
+}
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 // (async () => {
 //     await db.sync({force: true});
